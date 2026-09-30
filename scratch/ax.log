@@ -1,0 +1,7 @@
+'Carnot.carnot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Carnot.carnot_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Carnot.signedSideDist_circumcenter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Carnot.cos_add_cos_add_cos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Carnot.signedSideDist_eq_signedInfDist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Carnot.signedSideDist_incenter' depends on axioms: [propext, Classical.choice, Quot.sound]
+EXIT 0

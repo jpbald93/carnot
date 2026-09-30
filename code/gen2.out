@@ -1,0 +1,5 @@
+check 0
+deg 0 False
+deg 1 False
+deg 2 True
+(a*x + a*y - 2*a + b*x + b*y - b + c*x + c*y - c) * hx0 + (-a*x - b*x - b - c*x) * hx1 + (-a*y - b*y - c*y - c) * hx2

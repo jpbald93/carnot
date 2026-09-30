@@ -1,0 +1,4 @@
+cosA 3 (-a^2*x + a^2 + b^2*x + b^2*y - b^2) * hx0 + (a^2*x - b^2*x - b^2*y - c^2*x) * hx1 + (c^2*(x - 1)) * hx2
+cosB 3 (a^2*(y - 1)) * hx0 + (-b^2*y + b^2 - c^2*x) * hx1 + (-a^2*y + b^2*y + c^2*x - c^2) * hx2
+cosC 3 (a^2*(x - 1)) * hx0 + (-a^2*x + b^2*y - b^2 + c^2*x) * hx1 + (-b^2*y - c^2*x + c^2) * hx2
+sumcos 0
