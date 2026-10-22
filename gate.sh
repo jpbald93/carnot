@@ -18,7 +18,7 @@
 export PATH="$HOME/.elan/bin:$PATH"
 cd "$(dirname "$0")" || exit 1
 LIB="Carnot"
-REQUIRED="Carnot.carnot Carnot.carnot_poly Carnot.carnot_sum Carnot.cos_add_cos_add_cos Carnot.frame_data Carnot.height_sq_mul_sq Carnot.signedSideDist Carnot.signedSideDist_affineCombination Carnot.signedSideDist_circumcenter_eq Carnot.signedSideDist_eq_signedInfDist Carnot.signedSideDist_incenter Carnot.signedSideDist_point_self"
+REQUIRED="Carnot.carnot Carnot.carnot_poly Carnot.carnot_sum Carnot.cos_add_cos_add_cos Carnot.frame_data Carnot.height_sq_mul_sq Carnot.signedSideDist Carnot.signedSideDist_affineCombination Carnot.signedSideDist_circumcenter_eq Carnot.signedSideDist_eq_signedInfDist Carnot.signedSideDist_incenter Carnot.signedSideDist_point_self Carnot.l14_carnot Carnot.l14_carnot_of_dist_eq Carnot.l14_signedInfDist_circumcenter_eq Carnot.l14_cos_add_cos_add_cos Carnot.l14b_affineIndependent Carnot.l14b_norm Carnot.l14b_cos_angle Carnot.l14w_carnot Carnot.Classical.signedDistLine_face_eq Carnot.Classical.face_eq Carnot.Classical.sdl_eq_ssd Carnot.Classical.cov_TriSimplex1_a Carnot.Classical.cov_TriSimplex1_b_signed Carnot.Classical.cov_TriSimplex1_b Carnot.Classical.cov_TriSimplex1_b_acute Carnot.Classical.cov_TriSimplex1_b_acute_inside"
 SOURCES="$(find $LIB -name '*.lean' | sort | tr '\n' ' ') $LIB.lean"
 [ -e .lake/packages/mathlib ] || lake exe cache get || { echo "FAIL: could not fetch Mathlib cache"; exit 1; }
 if grep -nE "\bsorry\b|\badmit\b|native_decide|\baxiom\b|#eval|\brun_cmd\b|\binitialize\b|\bIO\b|\bdebug\.|\bmacro|\belab|\bsyntax\b|\bnotation\b|\binfix|\bprefix\b|\bpostfix\b|import Lean|open Lean|\bset_option\b" $SOURCES; then
@@ -26,7 +26,7 @@ if grep -nE "\bsorry\b|\badmit\b|native_decide|\baxiom\b|#eval|\brun_cmd\b|\bini
 build=$(lake build $LIB 2>&1); bstatus=$?
 printf '%s\n' "$build" | tail -3
 [ "$bstatus" -eq 0 ] || { printf '%s\n' "$build"; echo "FAIL: build"; exit 1; }
-chk=$(mktemp --suffix=.lean -p . .gatecheck_XXXX)
+chk=".gatecheck_$$.lean"
 trap 'rm -f "$chk"' EXIT
 { echo "import $LIB"; for t in $REQUIRED; do echo "#print axioms $t"; done; } > "$chk"
 out=$(lake env lean "$chk" 2>&1); status=$?
